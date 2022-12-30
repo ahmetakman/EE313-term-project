@@ -29,7 +29,7 @@
 %\cfoot{center of the footer!}
 %\renewcommand{\headrulewidth}{0.1pt}
 
-\title{ \vspace{-2ex} Fall 2022 EE Project Work  \protect\\ Proposal Report}
+\title{ \vspace{-2ex} EE313 Fall 2022 Project Work  \protect\\ Proposal Report}
 \author{ Ahmet Akman 2442366 -- Kaan Demirkoparan 2442903 \vspace{-2ex}}
 \date{}
 \begin{document}
@@ -65,7 +65,12 @@ The microphone is basically a resistor; its resistance is dependent on the audio
 
 The automatic gain control circuit is mainly designed around an opamp which has passive negative feedback composed of several resistances connected between the output and inverting input of the opamp. On the other hand, the positive feedback network will be constructed from a voltage amplifier and a transconductance amplifier. For high amplitude signals, the output of the opamp will also be high. That high-voltage signal will pass through the voltage amplifier and be converted to a DC-like voltage with the help of a load resistor and a capacitor. That DC voltage will drive the transconductance amplifier and change the current stolen from the non-inverting input of the opamp, which is also the input of the audio signal, according to the amplitude of the output signal. 
 \vspace{-0.3cm}
-
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{AGC.jpeg}
+    \caption{Automatic gain control circuit topology}
+    \label{AGC}
+\end{figure} 
 \subsection{Light Transmitter}
 
 The constant gain audio signal and the high-frequency reference signal should be summed before transmission. This summation process is thought to be applied by adopting a simple opamp summing amplifier.     
