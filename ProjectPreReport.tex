@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{report}
+\documentclass[a4paper,10pt]{article}
 \usepackage{mathptmx}
 
 \usepackage{tabularx} % extra features for tabular environment
@@ -30,7 +30,7 @@
 
 
 \begin{document}
-\thispagestyle{empty}
+%\thispagestyle{empty}
 
 \title{  Fall 2022 EE Project Work  \protect\\ Preliminary Report}
 \author{ Ahmet Akman 2442366 \protect\\ Kaan Demirkoparan}
@@ -59,7 +59,24 @@ xyz
 \subsection{Light Transmitter}
 \section{Receiver Side}
 \subsection{Light Receiver}
-\subsection{Demodulation and Speker Side}
+\subsection{Demodulation and Speaker Side}
+At the beggining of this stage a simple op-amp buffer will planned to be used in order to prevent distorion while using the same signal as input for two stages in parallel. For the demodulation of the input signal (a.k.a. filtering out the carrier high frequency components), a low pass filter will planned to be used. There are two basic  option for low pass filtering. First one is passive RC/RL filters. They use few components but have no gain and there is no tunability. Second one is active opamp-filters. Even though they seem more complicated one can have gain and a more flexible design. The required low pass charachteristic is given in Figure \ref*{low_pass_plot}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.75\textwidth]{active_low_pass.png}
+    \caption{Low pass filter frequency response}
+    \label{low_pass_plot}    
+\end{figure} 
+Because of the aforementioned advantages our design decision is using active two stage low pass filter with butterworth response. A premature design is given in Figure \ref*{low_pass_sch}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.75\textwidth]{active_low_pass_circuit.png}
+    \caption{Active low pass filter design}
+    \label{low_pass_sch}    
+\end{figure} 
+%LOW SİGNAL SWİTCH PART WILL BE ADDED
+Since, now we have a nice signal that carries the information needed, we should amplify it properly in order to drive the speaker. For the design purpose we assume our speaker is 16\(\Omega\) ,and our design constraint is that our speaker will operate with 1W power.
+   
 \subsection{Signal Quality Indication}
 
 \section{Conclusion}
