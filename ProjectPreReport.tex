@@ -55,10 +55,65 @@ xyz
 
 \section{Transmitter Side}
 \subsection{Input and Early Stage Amplification}
+
+The microphone is basically a resistor its resistance is dependent on the audio waves. To convert audio signals to electrical signals a voltage divider topology can be used. Since the output signal of that conversion gives a very small signal, it is much more sensitive to any noise. Therefore, just after that stage, this small signal should directly be amplified by using a common source or common emitter amplifier. This pre-amplifier gave a less noise-sensitive and more operatable voltage range signal. After that, it is thought to be fed that signal to a low pass filter to filter out only the human voice for other stages. 
+
 \subsection{Automatic Gain Control}
+
+The automatic gain control circuit is mainly designed around an op-amp which has passive negative feedback composed of several resistances connected between the output and inverting input of the op-amp. On the other hand, the positive feedback network will be constructed from a voltage amplifier and a transconductance amplifier. For high amplitude signals, the output of the op-amp will also be high. That high-voltage signal will pass through the voltage amplifier and be converted to a DC-like voltage with the help of a load resistor and a capacitor. That DC voltage will drive the transconductance amplifier and change the current stolen from the non-inverting input of the op-amp, which is also the input of the audio signal, according to the amplitude of the output signal. 
+
 \subsection{Light Transmitter}
+
+The constant gain audio signal and the high-frequency reference signal should be summed before transmission. This summation process is thought to be applied by adopting a simple op-amp summing amplifier. 	
+
+For transmission of the signal, the requirement of the light source can be supplied from a LED or a laser. Since the laser is more focused any small misalignment of it can possibly result in an error for both calibrations and debugging processes. Since then, a LED has been decided to be used. For infrared LEDs also an infrared-compatible receiver is needed which is generally more harder and expensive to obtain. That is why a single-colour visible light LED is determined to be used. In order to avoid any noise from environmental light sources, a plastic tube is thought to be included which will be expandable to be able to observe the change of the signal strength by changing its length. 
+
+The luminous intensities of LEDs are linearly dependent with forward current passing through. That is why, after the summation of the audio and reference signal, a transconductance amplifier is needed. That way, the voltage signal input will be converted to a current output signal that will be fed through the LED transmitter.
+
+
 \section{Receiver Side}
+
 \subsection{Light Receiver}
+
+On the receiver side, there is a need for some type of light detector to detect and receive the transmitted light which contains the audio signal. There are different types of photosensors but two of the most appropriate of them are photodiodes (Figure \ref*{Photodiode}) or phototransistors (Figure \ref*{Phototransistor}). Each of those components has some pros and cons. To determine the most suitable one for the current application some research has been conducted. We can see the characteristics and differences between them in Table \ref*{table1}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.75\textwidth]{Photovoltaic.png}
+    \caption{Circuit schematic for the step 5}
+    \label{photovoltaic}
+    \end{figure} 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.75\textwidth]{Photovoltaic.png}
+    \caption{Circuit schematic for the step 5}
+    \label{photovoltaic}
+    \end{figure} 
+
+
+Since high-frequency signals are used in the project, in terms of the response time the sensor should be quick and also as it is more affordable photodiode will be used. Depending on the project's progress and possible complications this decision can be changed. 
+
+Some further research is conducted for the implementation of it. There are two possible modes it can be used in terms of photovoltaic mode (Figure \ref{photovoltaic}) and photoconductive mode (Figure \ref{photoconductive}).  In the photoconductive mode since the photodiode is reverse biased, junction capacitance is small which gave a fast switching feature to the sensor. As discussed earlier, since it gives a faster response photoconductive mode is planned to be implemented.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.75\textwidth]{Photovoltaic.png}
+    \caption{Circuit schematic for the step 5}
+    \label{photovoltaic}
+    \end{figure} 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.75\textwidth]{Photoconductive.png}
+    \caption{Circuit schematic for the step 5}
+    \label{photoconductive}
+    \end{figure} 
+                
+
+
+
+
 \subsection{Demodulation and Speaker Side}
 At the beggining of this stage a simple op-amp buffer will planned to be used in order to prevent distorion while using the same signal as input for two stages in parallel. For the demodulation of the input signal (a.k.a. filtering out the carrier high frequency components), a low pass filter will planned to be used. There are two basic  option for low pass filtering. First one is passive RC/RL filters. They use few components but have no gain and there is no tunability. Second one is active opamp-filters. Even though they seem more complicated one can have gain and a more flexible design. The required low pass charachteristic is given in Figure \ref*{low_pass_plot}
 \begin{figure}[H]
@@ -119,6 +174,20 @@ Again a simple peak dedector will be utilized in order to discriminate the signa
 \end{figure} 
 \section{Conclusion}
 In this document, the Preliminary report of the term project of the EE313 course is presented. 
+
+\begin{table1}[]
+    \begin{tabular}{ll}
+    Photodiode is   a semiconductor component that converts light energy into electrical energy. & Phototransistor   is a semiconductor component that amplifies the current generated from light   energy. \\
+    It is composed   of one PN junction diode.                                                   & It is composed   of one NPN or PNP transistor that is sensitive to light.                                \\
+    It can be   forward or reverse-biased depending on the application.                          & It can only   be used in forward bias.                                                                   \\
+    It converts   light energy into electrical current.                                          & Since it   contains a transistor, it also amplifies the current.                                         \\
+    It is less sensitive   to light compared to phototransistor.                                 & Since it has a   gain by its structure it is more sensitive to smaller changes.                          \\
+    Comparing the   response time it is quicker.                                                 & İt has a   slower response time than the photodiode.                                                     \\
+    It can be   used with a power supply but it doesn’t require it.                              & It requires a   power supply with proper biasing.                                                        \\
+    It generates   both voltage and current.                                                     & It only   generates current.                                                                             \\
+    It is affordable.                                                                            & It is more   expensive than photodiode.                                                                 
+    \end{tabular}
+    \end{table}
 
 \end{document}
 
