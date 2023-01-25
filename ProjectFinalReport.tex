@@ -198,12 +198,37 @@ The frequency response of the high-pass filter is given in Figure \ref{highpass_
     \label{highpass_resp}
 \end{figure} 
 \subsection{Peak Detector}
-To be able to convert the sinusoidal signal coming from the high-pass filter to the DC logic levels. So we have utilized a two stage peak detector which has almost no ripple compared the its DC average. The circuit schematic is given in Figure \ref{}
+To be able to convert the sinusoidal signal coming from the high-pass filter to the DC logic levels. So we have utilized a two stage peak detector which has almost no ripple compared the its DC average. The circuit schematic is given in Figure \ref{peak}.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{Peak Detector.jpg}
+    \caption{Peak detector circuitry.}
+    \label{peak}
+\end{figure} 
 \subsubsection{Signal Level Indication}
+At the last stage of the carrier signal pathway, the a comparator array composed of op-amps drives an RGB LED to indicate the level of the incoming signal. Figure \ref{array} shows how the configuration works.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{Peak Detector.jpg}
+    \caption{Comparator array.}
+    \label{array}
+\end{figure}
+The scheme of how the signal levels corresponds to the colors are given in Table \ref{tab:array}
 
 
+\begin{table}[]
+    \caption{the color scheme}
+    \label{tab:array}
+    \begin{tabular}{|cc|cc|cc|cc|}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Reference 1}}          & \multicolumn{2}{c|}{\textbf{Reference 2}}            & \multicolumn{2}{c|}{\textbf{Reference 3}}            & \multicolumn{2}{c|}{\textbf{Reference 4}}            \\ \hline
+    \multicolumn{1}{|c|}{\textit{red}} & \textit{red}   & \multicolumn{1}{c|}{\textit{red}}   & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{red}   \\ \hline
+    \multicolumn{1}{|c|}{\textit{}}    & \textit{green} & \multicolumn{1}{c|}{\textit{green}} & \textit{green} & \multicolumn{1}{c|}{\textit{green}} & \textit{green} & \multicolumn{1}{c|}{\textit{green}} & \textit{green} \\ \hline
+    \multicolumn{1}{|c|}{\textit{}}    & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{blue}  & \multicolumn{1}{c|}{\textit{blue}}  & \textit{blue}  \\ \hline
+    \end{tabular}
+    \end{table}
 \section{Conclusion}
-
+In this project, we delved deeper into the intricacies of analog circuit design by applying the theoretical concepts learned in our EE311 and EE313 courses. Our focus was on optical wireless communication systems, and through our study of these systems, we gained a comprehensive understanding of their principles of operation. We explored new circuit designs such as transconductance and transresistance amplifiers, and learned how they can be applied in practical settings. Additionally, we gained valuable hands-on experience in implementing peak detector and speaker driver circuits. As we encountered and overcame any difficulties that arose during the course of the project, we developed a greater appreciation for the complexities and nuances of analog circuit design. Through this project, we were able to enhance our understanding of the fundamental concepts and principles that govern the functioning of analog circuits and gained a deeper understanding of their real-world applications.
 \section*{Appendix}
 
 \end{document}
