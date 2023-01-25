@@ -62,7 +62,15 @@ The microphone functions as a resistor, with its resistance varying based on the
     \caption{Microphone and preamplification circuit}
     \label{PreAmp}
 \end{figure} 
-The amplification factor can be adjusted from the pot so that the voice level and noise level can be fine tuned with a proper selection of amplification factor. The construction of this circuit is done on a breadboard and it can be said that the design specs are satisfied successfully as shown in the demonstration. 
+The amplification factor can be adjusted from the pot so that the voice level and noise level can be fine tuned with a proper selection of amplification factor. The construction of this circuit is done on a breadboard and it can be said that the design specs are satisfied successfully as shown in the demonstration. The experimental output of the preamplification is given in Figure \ref{preamp_osc}. The input is a 1khz sine wave sound played from a device.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{preamp_experimental.jpeg}
+    \caption{Microphone and preamplification circuit experimental result.}
+    \label{preamp_osc}
+\end{figure} 
+
+
 \subsection{Low Pass Filter}
 After the preamplification process is completed, the resulting output signal is sent to a low-pass filter to remove any unwanted frequencies. The typical range of human hearing is between 20 Hz and 20 kHz, but for this specific project, only the range of 100 Hz to 5 kHz is used. This is done to prevent overlap between the audio signal and the reference signal in the frequency domain. The low-pass filter used in this project is a two stage sallen-key active low pass filter which is shown in Figure \ref{lowpass}
 \begin{figure}[htbp!]
@@ -78,7 +86,7 @@ The frequency response of the circuit is given in Figure \ref{lowpass_resp}.
     \caption{Active low pass filter frequency response.}
     \label{lowpass_resp}
 \end{figure} 
-The filtering strategy is observed to be pretty accurate decision as very small noise is heard from the output. 
+The filtering strategy is observed to be quite accurate decision as very small noise is measured from the output. 
 \subsection{Automatic Gain Control}
 The automatic gain control circuit given in Figure \ref{AGC} is designed.
 
@@ -88,14 +96,27 @@ The automatic gain control circuit given in Figure \ref{AGC} is designed.
     \caption{Automatic gain circuit schematic.}
     \label{AGC}
 \end{figure} 
- The circuit composed of three transistors. The first stage (Q2) is a common emitter amplifier with a feedback supplied by other two transistor. The second transistor in common collector configuration is a voltage buffer that takes the amplitude information of the Q2. Then the Q3 works as an active resistor which takes input from a simple peak detector connected after Q3. The simulation results are given in Figure \ref{AGC_sim} .
+ The circuit composed of three transistors. The first stage (Q2) is a common emitter amplifier with a feedback supplied by other two transistor. The second transistor in common collector configuration is a voltage buffer that takes the amplitude information of the Q2. Then the Q3 works as an active resistor which takes input from a simple peak detector connected after Q3. 
+ The simulation carried out in LTSpice .The  input and output characteristics for different amplitudes are given in Figure \ref{AGC_sim_input} and \ref{AGC_sim_output} respectively.
  \begin{figure}[htbp!]
     \centering
-    \includegraphics[width = 1\linewidth]{AGC Circuit.jpg}
-    \caption{Automatic gain circuit simulation.}
-    \label{AGC_sim}
+    \includegraphics[width = 1\linewidth]{AGC Simulation Input.jpg}
+    \caption{Automatic gain circuit simulation input.}
+    \label{AGC_sim_input}
 \end{figure} 
-
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{AGC Simulation Output.jpg}
+    \caption{Automatic gain circuit simulation output.}
+    \label{AGC_sim_output}
+\end{figure} 
+The experimental output of the AGC is given in Figure \ref{agc_osc}. The input is a 1khz sine wave sound played from a device.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{AGC_Experimental.jpeg}
+    \caption{AGC circuit experimental result.}
+    \label{agc_osc}
+\end{figure} 
 \subsection{Reference Signal Summation}
 
 The constant gain audio signal and the high-frequency reference signal should be summed before transmission. This summation process is thought to be applied by adopting a simple op-amp summing amplifier.  The schematic is given in \ref{summing} is used in 1 to 1 ratio.
@@ -125,12 +146,59 @@ As a result of our prototyping process, we have constructed the circuit on a bre
 \end{figure} 
 
 \section{Receiver Side}
+As shown in Figure \ref{general} the receiver design has two main branches after the light receiver. Therefore we have investigated them seperately.
 \subsection{Light Receiver}
+In the receiver section of the system, a photodiode is utilized to transform the optical signal into an electrical one. It's important to note that photodiodes are components that respond to current, so in order to convert the current into a voltage signal, a transresistance amplifier is employed. The design of the transresistance stage can be observed in Figure \ref{photodiode}. 
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{Photodiode amplifier.jpg}
+    \caption{Photodiode amplifier. }
+    \label{photodiode}
+\end{figure} 
+At the output of the light receiver an opamp buffer is emplyed for each input of a filter in order to maintain good signal quality on both inputs.
 \subsection{Voice Signal Path}
 \subsubsection{Low Pass Filter}
+In order to extract the sound signal from inside of incoming signal a low-pass filter that is explained in the transmitter side is used. The circuit schematic is given in Figure \ref{lowpass} and the frequency response is given in Figure \ref{lowpass_resp}. We have constructed the given circuit and the experimental result is given in Figure \ref{lowpass_osc}.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{receiver_lowpass_experimental.jpeg}
+    \caption{Experimental response of the lowpass filter at the receiver side. }
+    \label{lowpass_osc}
+\end{figure} 
+Thus, it can be said that the intended use of the filter is achived.
 \subsubsection{Speaker Driver}
+After the process of filtering out high frequency signals, the original sound is obtained. This signal is then sent to the final stage for output, where power amplifiers with cooling components are utilized to power the speaker as op-amps alone are not capable of providing enough current. The specific type of output stage used in this scenario is known as a Class B output stage, which is more beneficial than Class A output stage since it offers relatively higher level of efficiency. A diagram of the speaker stage circuit can be found in Figure \ref{classb}.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{classb.png}
+    \caption{Class B amplifier. }
+    \label{classb}
+\end{figure} 
+The used topology also allows us to adjust the volume level easily without any compatibility or additional tuning for cascading two stages. The physical output of the amplifier is given in Figure \ref{speaker_osc}. That is the same 1kHz signal used in the first stage.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{speaker_amplifier.jpeg}
+    \caption{Experimental response of the speaker amplifier at the receiver side. }
+    \label{speaker_osc}
+\end{figure} 
 \subsection{Carrier Signal Path}
 \subsubsection{High Pass Filter}
+To distinguish carrier signal from the  incoming overall signal. An active high-pass filter with sallen-key configuration  is used. The schematic is given in Figure \ref{highpass}.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{active_high_pass_circuit.png}
+    \caption{High pass filter schematic. }
+    \label{highpass}
+\end{figure} 
+The frequency response of the high-pass filter is given in Figure \ref{highpass_resp}.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{active_high_pass.png}
+    \caption{High pass filter frequency response.}
+    \label{highpass_resp}
+\end{figure} 
+\subsection{Peak Detector}
+To be able to convert the sinusoidal signal coming from the high-pass filter to the DC logic levels. So we have utilized a two stage peak detector which has almost no ripple compared the its DC average. The circuit schematic is given in Figure \ref{}
 \subsubsection{Signal Level Indication}
 
 
