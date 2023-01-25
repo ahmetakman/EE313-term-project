@@ -54,7 +54,7 @@ The general structure is given in Figure \ref{general}. Mainly there are transmi
 \end{figure} 
 \section{Transmitter Side}
 \subsection{Input and Early Stage Amplification}
-The microphone functions as a resistor, with its resistance varying based on the audio waves. To turn audio signals into electrical signals, a voltage divider circuit can be employed. However, the resulting output signal is quite weak, making it susceptible to noise. To mitigate this issue, the small signal is amplified using a common source or common emitter amplifier, which results in a less noise-sensitive and more usable voltage range signal. Subsequently, this signal is passed through a low pass filter to separate the human voice for further processing. The schematic of this circuit is given in Figure \ref{PreAmp}
+The microphone functions as a resistor, with its resistance varying based on the audio waves. To turn audio signals into electrical signals, a voltage divider circuit can be employed. However, the resulting output signal is quite weak, making it susceptible to noise. To mitigate this issue, the small signal is amplified using a common source or common emitter amplifier, which results in a less noise-sensitive and more usable voltage range signal. Subsequently, this signal is passed through a low pass filter to separate the human voice for further processing. The schematic of this circuit is given in Figure \ref{PreAmp} .
 
 \begin{figure}[htbp!]
     \centering
@@ -63,7 +63,7 @@ The microphone functions as a resistor, with its resistance varying based on the
     \label{PreAmp}
 \end{figure} 
 The amplification factor can be adjusted from the pot so that the voice level and noise level can be fine-tuned with a proper selection of amplification factors. The construction of this circuit is done on a breadboard, and the design specs are satisfied successfully, as shown in the demonstration. The experimental output of the preamplification is given in Figure \ref{preamp_osc}. The input is a 1khz sine wave sound played from a device.
-\begin{figure}[htbp!]
+\begin{figure}[H]
     \centering
     \includegraphics[width = 1\linewidth]{preamp_experimental.jpeg}
     \caption{Microphone and preamplification circuit experimental result.}
@@ -72,7 +72,7 @@ The amplification factor can be adjusted from the pot so that the voice level an
 
 
 \subsection{Low Pass Filter}
-After the preamplification process is completed, the resulting output signal is sent to a low-pass filter to remove any unwanted frequencies. The typical range of human hearing is between 20 Hz and 20 kHz, but for this specific project, only the range of 100 Hz to 5 kHz is used. This is done to prevent overlap between the audio signal and the reference signal in the frequency domain. The low-pass filter used in this project is a two-stage Sallen-Key active low-pass filter which is shown in Figure \ref{low-pass}
+After the preamplification process is completed, the resulting output signal is sent to a low-pass filter to remove any unwanted frequencies. The typical range of human hearing is between 20 Hz and 20 kHz, but for this specific project, only the range of 100 Hz to 5 kHz is used. This is done to prevent overlap between the audio signal and the reference signal in the frequency domain. The low-pass filter used in this project is a two-stage Sallen-Key active low-pass filter which is shown in Figure \ref{lowpass}
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{active_low_pass_circuit.png}
@@ -90,7 +90,7 @@ The filtering strategy is an accurate decision as minimal noise is measured from
 \subsection{Automatic Gain Control}
 The automatic gain control circuit given in Figure \ref{AGC} is designed.
 
-\begin{figure}[htbp!]
+\begin{figure}[H]
     \centering
     \includegraphics[width = 1\linewidth]{AGC Circuit.jpg}
     \caption{Automatic gain circuit schematic.}
@@ -111,7 +111,7 @@ The automatic gain control circuit given in Figure \ref{AGC} is designed.
     \label{AGC_sim_output}
 \end{figure} 
 The experimental output of the AGC is given in Figure \ref{agc_osc}. The input is a 1khz sine wave sound played from a device.
-\begin{figure}[htbp!]
+\begin{figure}[H]
     \centering
     \includegraphics[width = 1\linewidth]{AGC_Experimental.jpeg}
     \caption{AGC circuit experimental result.}
@@ -153,7 +153,7 @@ In the receiver section of the system, a photodiode is utilized to transform the
 At the output of the light receiver, an op-amp buffer is employed for each input of a filter in order to maintain the good signal quality on both inputs.
 \subsection{Voice Signal Path}
 \subsubsection{Low Pass Filter}
-In order to extract the sound signal from the inside of the incoming signal, a low-pass filter that is explained on the transmitter side is used. The circuit schematic is given in Figure \ref{low-pass}, and the frequency response is given in Figure \ref{lowpass_resp}. We have constructed the given circuit, and the experimental result is given in Figure \ref{lowpass_osc}.
+In order to extract the sound signal from the inside of the incoming signal, a low-pass filter that is explained on the transmitter side is used. The circuit schematic is given in Figure \ref{lowpass}, and the frequency response is given in Figure \ref{lowpass_resp}. We have constructed the given circuit, and the experimental result is given in Figure \ref{lowpass_osc}.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{receiver_lowpass_experimental.jpeg}
@@ -169,7 +169,7 @@ After the process of filtering out high-frequency signals, the original sound is
     \caption{Class B amplifier. }
     \label{classb}
 \end{figure} 
-The used topology also allows us to adjust the volume level easily without any compatibility issue or additional tuning for cascading two stages. The physical output of the amplifier is given in Figure \ref{speaker_osc}. That is the same 1kHz signal used in the first stage.
+The used topology also allows us to adjust the volume level easily without any compatibility issue or additional tuning for cascading two stages. The physical output of the amplifier is given in Figure \ref{speaker_osc}. That is the same 1kHz signal used in the first stage. Since we use 8\(\Omega\) speaker, it is satisfactory for sustaining 
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{speaker_amplifier.jpeg}
@@ -188,14 +188,14 @@ To distinguish the carrier signal from the overall incoming signal. An active hi
     \label{highpass}
 \end{figure} 
 The frequency response of the highpass filter is given in Figure \ref{highpass_resp}.
-\begin{figure}[htbp!]
+\begin{figure}[H]
     \centering
     \includegraphics[width = 1\linewidth]{active_high_pass.png}
     \caption{High pass filter frequency response.}
     \label{highpass_resp}
 \end{figure} 
 \subsection{Peak Detector}
-To be able to convert the sinusoidal signal coming from the highpass filter to the DC logic levels. So we have utilized a two-stage peak detector which has almost no ripple compared to its DC average. The circuit schematic is given in Figure \ref{peak}.
+To be able to convert the sinusoidal signal coming from the highpass filter to the DC logic levels we have used we have utilized a two-stage peak detector which has almost no ripple compared to its DC average. The circuit schematic is given in Figure \ref{peak}.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{Peak Detector.jpg}
@@ -210,7 +210,7 @@ At the last stage of the carrier signal pathway, the comparator array composed o
     \caption{Comparator array.}
     \label{array}
 \end{figure}
-The scheme of how the signal levels correspond to the colors is given in Table \ref{tab:array}
+The scheme of how the signal levels correspond to the colors is given in Table \ref{tab:array} .
 
 
 \begin{table}[]
