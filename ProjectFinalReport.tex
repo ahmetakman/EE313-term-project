@@ -43,9 +43,9 @@
 %\end{abstract}
 
 \section{Introduction}
-Our project in the fall semester of 2022 aimed to transmit an audio signal via an optical transmitter module. It was divided into two components: the transmitter and receiver. To measure signal strength, we combined the audio signal with a reference signal. Our design featured circuit designs such as low-pass and high-pass filters, an automatic gain control circuit, and a power amplifier for the speaker. This report will give details on the project's specifications, components, and stages. It will also provide information on the design methodology, simulation results, experimental results, a comparison of the simulation and experimental results, and explanations for any differences.
+Our project in the EE313 course aimed to transmit an audio signal via an optical transmitter module. It was divided into two components: the transmitter and the receiver. To measure signal strength, we combined the audio signal with a reference signal. Our design featured circuit designs such as low-pass and highpass filters, an automatic gain control circuit, and a power amplifier for the speaker. This report will give details on the project's specifications, components, and stages. It will also provide information on the design methodology, simulation results, and experimental results, a comparison of the simulation and experimental results, and explanations for any differences.
 \section{General Structure and Design Philisophy}
- The general structure is given in Figure \ref{general}
+The general structure is given in Figure \ref{general}. Mainly there are transmitter and receiver sides. The transmitter is responsible for the acquisition of the sound signal and processing it to be carried out in the air with light. The receiver is responsible for the extraction of the sound signal from the incoming light, informing the customer about the signal quality, and broadcasting the sound signal to the user.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{general_structure.jpeg}
@@ -54,7 +54,7 @@ Our project in the fall semester of 2022 aimed to transmit an audio signal via a
 \end{figure} 
 \section{Transmitter Side}
 \subsection{Input and Early Stage Amplification}
-The microphone functions as a resistor, with its resistance varying based on the audio waves. To turn audio signals into electrical signals, a voltage divider circuit can be employed. However, the resulting output signal is quite weak, making it susceptible to noise. To mitigate this, the small signal is amplified using a common source or common emitter amplifier, which results in a less noise-sensitive and more usable voltage range signal. Subsequently, this signal is passed through a low pass filter to separate the human voice for further processing. The schematic of this circuit is given in Figure \ref{PreAmp}
+The microphone functions as a resistor, with its resistance varying based on the audio waves. To turn audio signals into electrical signals, a voltage divider circuit can be employed. However, the resulting output signal is quite weak, making it susceptible to noise. To mitigate this issue, the small signal is amplified using a common source or common emitter amplifier, which results in a less noise-sensitive and more usable voltage range signal. Subsequently, this signal is passed through a low pass filter to separate the human voice for further processing. The schematic of this circuit is given in Figure \ref{PreAmp}
 
 \begin{figure}[htbp!]
     \centering
@@ -62,7 +62,7 @@ The microphone functions as a resistor, with its resistance varying based on the
     \caption{Microphone and preamplification circuit}
     \label{PreAmp}
 \end{figure} 
-The amplification factor can be adjusted from the pot so that the voice level and noise level can be fine tuned with a proper selection of amplification factor. The construction of this circuit is done on a breadboard and it can be said that the design specs are satisfied successfully as shown in the demonstration. The experimental output of the preamplification is given in Figure \ref{preamp_osc}. The input is a 1khz sine wave sound played from a device.
+The amplification factor can be adjusted from the pot so that the voice level and noise level can be fine-tuned with a proper selection of amplification factors. The construction of this circuit is done on a breadboard, and the design specs are satisfied successfully, as shown in the demonstration. The experimental output of the preamplification is given in Figure \ref{preamp_osc}. The input is a 1khz sine wave sound played from a device.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{preamp_experimental.jpeg}
@@ -72,7 +72,7 @@ The amplification factor can be adjusted from the pot so that the voice level an
 
 
 \subsection{Low Pass Filter}
-After the preamplification process is completed, the resulting output signal is sent to a low-pass filter to remove any unwanted frequencies. The typical range of human hearing is between 20 Hz and 20 kHz, but for this specific project, only the range of 100 Hz to 5 kHz is used. This is done to prevent overlap between the audio signal and the reference signal in the frequency domain. The low-pass filter used in this project is a two stage sallen-key active low pass filter which is shown in Figure \ref{lowpass}
+After the preamplification process is completed, the resulting output signal is sent to a low-pass filter to remove any unwanted frequencies. The typical range of human hearing is between 20 Hz and 20 kHz, but for this specific project, only the range of 100 Hz to 5 kHz is used. This is done to prevent overlap between the audio signal and the reference signal in the frequency domain. The low-pass filter used in this project is a two-stage Sallen-Key active low-pass filter which is shown in Figure \ref{low-pass}
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{active_low_pass_circuit.png}
@@ -86,7 +86,7 @@ The frequency response of the circuit is given in Figure \ref{lowpass_resp}.
     \caption{Active low pass filter frequency response.}
     \label{lowpass_resp}
 \end{figure} 
-The filtering strategy is observed to be quite accurate decision as very small noise is measured from the output. 
+The filtering strategy is an accurate decision as minimal noise is measured from the output. 
 \subsection{Automatic Gain Control}
 The automatic gain control circuit given in Figure \ref{AGC} is designed.
 
@@ -96,8 +96,8 @@ The automatic gain control circuit given in Figure \ref{AGC} is designed.
     \caption{Automatic gain circuit schematic.}
     \label{AGC}
 \end{figure} 
- The circuit composed of three transistors. The first stage (Q2) is a common emitter amplifier with a feedback supplied by other two transistor. The second transistor in common collector configuration is a voltage buffer that takes the amplitude information of the Q2. Then the Q3 works as an active resistor which takes input from a simple peak detector connected after Q3. 
- The simulation carried out in LTSpice .The  input and output characteristics for different amplitudes are given in Figure \ref{AGC_sim_input} and \ref{AGC_sim_output} respectively.
+ The circuit is composed of three transistors. The first stage (Q2) is a common emitter amplifier with feedback supplied by two other transistors. The second transistor in the common collector configuration is a voltage buffer that takes the amplitude information of the Q2. Then the Q3 works as an active resistor which takes input from a simple peak detector connected after Q3. 
+ The simulation was carried out in LTSpice.The input and output characteristics for different amplitudes are given in Figure \ref{AGC_sim_input} and \ref{AGC_sim_output}, respectively.
  \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{AGC Simulation Input.jpg}
@@ -119,75 +119,75 @@ The experimental output of the AGC is given in Figure \ref{agc_osc}. The input i
 \end{figure} 
 \subsection{Reference Signal Summation}
 
-The constant gain audio signal and the high-frequency reference signal should be summed before transmission. This summation process is thought to be applied by adopting a simple op-amp summing amplifier.  The schematic is given in \ref{summing} is used in 1 to 1 ratio.
+The constant gain audio signal and the high-frequency reference signal should be summed before transmission. This summation process is thought to be applied by adopting a simple op-amp summing amplifier. The schematic given in \ref{summing} is used in a 1 to 1 ratio.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{Summing Amplifier.jpg}
     \caption{Summing amplifier.}
     \label{summing}
 \end{figure} 
-This circuit is a basic sum operator and 
+
 \subsection{Light Transmission}
-The decision on the light transmission is made towards using an IR LED. Since the LED's brightness changes with respect to the current pass thorugh it , we needed to convert the signal from voltage form to current form. In order achieve this we have utilized a transconductance amplifier given in Figure \ref{transconductance}. 
+The decision on the light transmission is made towards using an IR LED. Since the LED's brightness changes with respect to the current passing through it, we needed to convert the signal from voltage form to current form. In order to achieve this, we have utilized a transconductance amplifier given in Figure \ref{transconductance}. 
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{Led Driver Circuit.jpg}
     \caption{Transconductance amplifier.}
     \label{transconductance}
 \end{figure} 
-The circuit is composed of a basic degenerated common emitter configuration with a feedback. 
+The circuit is composed of a basic degenerated common emitter configuration with feedback. 
 
-As a result of our prototyping process, we have constructed the circuit on a breadboard and the transmitter part of the circuit is successfully operated as expected without any big surprise. The physical structure of our prototype is given in Figure \ref{transmitter_breadboard} in Appendix.
+As a result of our prototyping process, we constructed the circuit on a breadboard, and the transmitter part of the circuit was successfully operated as expected without any big surprise. The physical structure of our prototype is given in Figure \ref{transmitter_breadboard} in Appendix.
 
 
 \section{Receiver Side}
-As shown in Figure \ref{general} the receiver design has two main branches after the light receiver. Therefore we have investigated them seperately.
+As shown in Figure \ref{general}, the receiver design has two main branches after the light receiver. Therefore we have investigated them separately.
 \subsection{Light Receiver}
-In the receiver section of the system, a photodiode is utilized to transform the optical signal into an electrical one. It's important to note that photodiodes are components that respond to current, so in order to convert the current into a voltage signal, a transresistance amplifier is employed. The design of the transresistance stage can be observed in Figure \ref{photodiode}. 
+In the receiver section of the system, a photodiode is utilized to transform the optical signal into an electrical one. It is important to note that photodiodes are components that respond to current, so in order to convert the current into a voltage signal, a transresistance amplifier is employed. The design of the transresistance stage can be observed in Figure \ref{photodiode}. 
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{Photodiode amplifier.jpg}
     \caption{Photodiode amplifier. }
     \label{photodiode}
 \end{figure} 
-At the output of the light receiver an opamp buffer is emplyed for each input of a filter in order to maintain good signal quality on both inputs.
+At the output of the light receiver, an op-amp buffer is employed for each input of a filter in order to maintain the good signal quality on both inputs.
 \subsection{Voice Signal Path}
 \subsubsection{Low Pass Filter}
-In order to extract the sound signal from inside of incoming signal a low-pass filter that is explained in the transmitter side is used. The circuit schematic is given in Figure \ref{lowpass} and the frequency response is given in Figure \ref{lowpass_resp}. We have constructed the given circuit and the experimental result is given in Figure \ref{lowpass_osc}.
+In order to extract the sound signal from the inside of the incoming signal, a low-pass filter that is explained on the transmitter side is used. The circuit schematic is given in Figure \ref{low-pass}, and the frequency response is given in Figure \ref{lowpass_resp}. We have constructed the given circuit, and the experimental result is given in Figure \ref{lowpass_osc}.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{receiver_lowpass_experimental.jpeg}
-    \caption{Experimental response of the lowpass filter at the receiver side. }
+    \caption{Experimental response of the low-pass filter at the receiver side. }
     \label{lowpass_osc}
 \end{figure} 
-Thus, it can be said that the intended use of the filter is achived.
+Thus, the intended use of the filter is achieved.
 \subsubsection{Speaker Driver}
-After the process of filtering out high frequency signals, the original sound is obtained. This signal is then sent to the final stage for output, where power amplifiers with cooling components are utilized to power the speaker as op-amps alone are not capable of providing enough current. The specific type of output stage used in this scenario is known as a Class B output stage, which is more beneficial than Class A and Class AB output stage since it offers relatively higher level of efficiency. A diagram of the speaker stage circuit can be found in Figure \ref{classb}.
+After the process of filtering out high-frequency signals, the original sound is obtained. This signal is then sent to the final stage for output, where power amplifiers with cooling components are utilized to power the speaker, as op-amps alone are not capable of providing enough current. The specific type of output stage used in this scenario is known as a Class B output stage, which is more beneficial than Class A and Class AB output stage since it offers a relatively higher level of efficiency. A diagram of the speaker stage circuit can be found in Figure \ref{classb}.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{classb.png}
     \caption{Class B amplifier. }
     \label{classb}
 \end{figure} 
-The used topology also allows us to adjust the volume level easily without any compatibility or additional tuning for cascading two stages. The physical output of the amplifier is given in Figure \ref{speaker_osc}. That is the same 1kHz signal used in the first stage.
+The used topology also allows us to adjust the volume level easily without any compatibility issue or additional tuning for cascading two stages. The physical output of the amplifier is given in Figure \ref{speaker_osc}. That is the same 1kHz signal used in the first stage.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{speaker_amplifier.jpeg}
     \caption{Experimental response of the speaker amplifier at the receiver side. }
     \label{speaker_osc}
 \end{figure} 
-As a result of our prototyping process, we have constructed the speaker circuit on a breadboard and the voice part of the circuit is successfully operated as expected. The physical structure of our prototype is given in Figure \ref{speaker_breadboard} in Appendix.
+As a result of our prototyping process, we have constructed the speaker circuit on a breadboard, and the voice part of the circuit is successfully operated as expected. The physical structure of our prototype is given in Figure \ref{speaker_breadboard} in Appendix.
 
 \subsection{Carrier Signal Path}
 \subsubsection{High Pass Filter}
-To distinguish carrier signal from the  incoming overall signal. An active high-pass filter with sallen-key configuration  is used. The schematic is given in Figure \ref{highpass}.
+To distinguish the carrier signal from the overall incoming signal. An active highpass filter with Sallen-Key configuration is used. The schematic is given in Figure \ref{highpass}.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{active_high_pass_circuit.png}
     \caption{High pass filter schematic. }
     \label{highpass}
 \end{figure} 
-The frequency response of the high-pass filter is given in Figure \ref{highpass_resp}.
+The frequency response of the highpass filter is given in Figure \ref{highpass_resp}.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{active_high_pass.png}
@@ -195,7 +195,7 @@ The frequency response of the high-pass filter is given in Figure \ref{highpass_
     \label{highpass_resp}
 \end{figure} 
 \subsection{Peak Detector}
-To be able to convert the sinusoidal signal coming from the high-pass filter to the DC logic levels. So we have utilized a two stage peak detector which has almost no ripple compared the its DC average. The circuit schematic is given in Figure \ref{peak}.
+To be able to convert the sinusoidal signal coming from the highpass filter to the DC logic levels. So we have utilized a two-stage peak detector which has almost no ripple compared to its DC average. The circuit schematic is given in Figure \ref{peak}.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{Peak Detector.jpg}
@@ -203,14 +203,14 @@ To be able to convert the sinusoidal signal coming from the high-pass filter to 
     \label{peak}
 \end{figure} 
 \subsubsection{Signal Level Indication}
-At the last stage of the carrier signal pathway, the a comparator array composed of op-amps drives an RGB LED to indicate the level of the incoming signal. Figure \ref{array} shows how the configuration works.
+At the last stage of the carrier signal pathway, the comparator array composed of op-amps drives an RGB LED to indicate the level of the incoming signal. Figure \ref{array} shows how the configuration works.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{Led Driver Circuit.jpg}
     \caption{Comparator array.}
     \label{array}
 \end{figure}
-The scheme of how the signal levels corresponds to the colors are given in Table \ref{tab:array}
+The scheme of how the signal levels correspond to the colors is given in Table \ref{tab:array}
 
 
 \begin{table}[]
@@ -224,9 +224,9 @@ The scheme of how the signal levels corresponds to the colors are given in Table
     \multicolumn{1}{|c|}{\textit{}}    & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{blue}  & \multicolumn{1}{c|}{\textit{blue}}  & \textit{blue}  \\ \hline
     \end{tabular}
 \end{table}
-As a result of our prototyping process, we have constructed the whole receiver circuit on a breadboard and the receiver part of the circuit is successfully operated as expected. The physical structure of our prototype is given in Figure \ref{receiver_breadboard} in Appendix.
+As a result of our prototyping process, we have constructed the whole receiver circuit on a breadboard, and the receiver part of the circuit is successfully operated as expected. The physical structure of our prototype is given in Figure \ref{receiver_breadboard} in Appendix.
 \section{Conclusion}
-In this project, we delved deeper into the intricacies of analog circuit design by applying the theoretical concepts learned in our EE311 and EE313 courses. Our focus was on optical wireless communication systems, and through our study of these systems, we gained a comprehensive understanding of their principles of operation. We explored new circuit designs such as transconductance and transresistance amplifiers, and learned how they can be applied in practical settings. Additionally, we gained valuable hands-on experience in implementing peak detector and speaker driver circuits. As we encountered and overcame any difficulties that arose during the course of the project, we developed a greater appreciation for the complexities and nuances of analog circuit design. Through this project, we were able to enhance our understanding of the fundamental concepts and principles that govern the functioning of analog circuits and gained a deeper understanding of their real-world applications.
+In this project, we delved deeper into the intricacies of analog circuit design by applying the theoretical concepts learned in our EE311 and EE313 courses. Our focus was on optical wireless communication systems, and through our study of these systems, we gained a comprehensive understanding of their principles of operation. We explored new circuit designs, such as transconductance and transresistance amplifiers, and learned how they could be applied in practical settings. Additionally, we gained valuable hands-on experience in implementing peak detector and speaker driver circuits. As we encountered and overcame any difficulties that arose during the course of the project, we developed a greater appreciation for the complexities and nuances of analog circuit design. Through this project, we were able to enhance our understanding of the fundamental concepts and principles that governed the functioning of analog circuits and gained a deeper understanding of their real-world applications.
 \section*{Appendix}
 The physical model of our system is presented in Appendix.
 \begin{figure}[htbp!]
