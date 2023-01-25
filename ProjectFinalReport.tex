@@ -137,13 +137,8 @@ The decision on the light transmission is made towards using an IR LED. Since th
 \end{figure} 
 The circuit is composed of a basic degenerated common emitter configuration with a feedback. 
 
-As a result of our prototyping process, we have constructed the circuit on a breadboard and the transmitter part of the circuit is successfully operated as expected without any big surprise. The physical structure of our prototype is given in Figure \ref{transmitter_breadboard}
-\begin{figure}[htbp!]
-    \centering
-    \includegraphics[width = 1\linewidth]{transmitter.jpeg}
-    \caption{Transmitter prototype.}
-    \label{transmitter_breadboard}
-\end{figure} 
+As a result of our prototyping process, we have constructed the circuit on a breadboard and the transmitter part of the circuit is successfully operated as expected without any big surprise. The physical structure of our prototype is given in Figure \ref{transmitter_breadboard} in Appendix.
+
 
 \section{Receiver Side}
 As shown in Figure \ref{general} the receiver design has two main branches after the light receiver. Therefore we have investigated them seperately.
@@ -209,7 +204,7 @@ To be able to convert the sinusoidal signal coming from the high-pass filter to 
 At the last stage of the carrier signal pathway, the a comparator array composed of op-amps drives an RGB LED to indicate the level of the incoming signal. Figure \ref{array} shows how the configuration works.
 \begin{figure}[htbp!]
     \centering
-    \includegraphics[width = 1\linewidth]{Peak Detector.jpg}
+    \includegraphics[width = 1\linewidth]{Led Driver Circuit.jpg}
     \caption{Comparator array.}
     \label{array}
 \end{figure}
@@ -226,11 +221,18 @@ The scheme of how the signal levels corresponds to the colors are given in Table
     \multicolumn{1}{|c|}{\textit{}}    & \textit{green} & \multicolumn{1}{c|}{\textit{green}} & \textit{green} & \multicolumn{1}{c|}{\textit{green}} & \textit{green} & \multicolumn{1}{c|}{\textit{green}} & \textit{green} \\ \hline
     \multicolumn{1}{|c|}{\textit{}}    & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{blue}  & \multicolumn{1}{c|}{\textit{blue}}  & \textit{blue}  \\ \hline
     \end{tabular}
-    \end{table}
+\end{table}
+    
 \section{Conclusion}
 In this project, we delved deeper into the intricacies of analog circuit design by applying the theoretical concepts learned in our EE311 and EE313 courses. Our focus was on optical wireless communication systems, and through our study of these systems, we gained a comprehensive understanding of their principles of operation. We explored new circuit designs such as transconductance and transresistance amplifiers, and learned how they can be applied in practical settings. Additionally, we gained valuable hands-on experience in implementing peak detector and speaker driver circuits. As we encountered and overcame any difficulties that arose during the course of the project, we developed a greater appreciation for the complexities and nuances of analog circuit design. Through this project, we were able to enhance our understanding of the fundamental concepts and principles that govern the functioning of analog circuits and gained a deeper understanding of their real-world applications.
 \section*{Appendix}
-
+The physical model of our system is presented in Appendix.
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{transmitter.jpeg}
+    \caption{Transmitter prototype.}
+    \label{transmitter_breadboard}
+\end{figure} 
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%   EXAMPLE TABLE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
