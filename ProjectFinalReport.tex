@@ -122,7 +122,7 @@ The experimental output of the AGC is given in Figure \ref{agc_osc}. The input i
 The constant gain audio signal and the high-frequency reference signal should be summed before transmission. This summation process is thought to be applied by adopting a simple op-amp summing amplifier.  The schematic is given in \ref{summing} is used in 1 to 1 ratio.
 \begin{figure}[htbp!]
     \centering
-    \includegraphics[width = 1\linewidth]{AGC Circuit.jpg}
+    \includegraphics[width = 1\linewidth]{Summing Amplifier.jpg}
     \caption{Summing amplifier.}
     \label{summing}
 \end{figure} 
@@ -162,7 +162,7 @@ In order to extract the sound signal from inside of incoming signal a low-pass f
 \end{figure} 
 Thus, it can be said that the intended use of the filter is achived.
 \subsubsection{Speaker Driver}
-After the process of filtering out high frequency signals, the original sound is obtained. This signal is then sent to the final stage for output, where power amplifiers with cooling components are utilized to power the speaker as op-amps alone are not capable of providing enough current. The specific type of output stage used in this scenario is known as a Class B output stage, which is more beneficial than Class A output stage since it offers relatively higher level of efficiency. A diagram of the speaker stage circuit can be found in Figure \ref{classb}.
+After the process of filtering out high frequency signals, the original sound is obtained. This signal is then sent to the final stage for output, where power amplifiers with cooling components are utilized to power the speaker as op-amps alone are not capable of providing enough current. The specific type of output stage used in this scenario is known as a Class B output stage, which is more beneficial than Class A and Class AB output stage since it offers relatively higher level of efficiency. A diagram of the speaker stage circuit can be found in Figure \ref{classb}.
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{classb.png}
@@ -176,6 +176,8 @@ The used topology also allows us to adjust the volume level easily without any c
     \caption{Experimental response of the speaker amplifier at the receiver side. }
     \label{speaker_osc}
 \end{figure} 
+As a result of our prototyping process, we have constructed the speaker circuit on a breadboard and the voice part of the circuit is successfully operated as expected. The physical structure of our prototype is given in Figure \ref{speaker_breadboard} in Appendix.
+
 \subsection{Carrier Signal Path}
 \subsubsection{High Pass Filter}
 To distinguish carrier signal from the  incoming overall signal. An active high-pass filter with sallen-key configuration  is used. The schematic is given in Figure \ref{highpass}.
@@ -222,7 +224,7 @@ The scheme of how the signal levels corresponds to the colors are given in Table
     \multicolumn{1}{|c|}{\textit{}}    & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{}      & \multicolumn{1}{c|}{\textit{}}      & \textit{blue}  & \multicolumn{1}{c|}{\textit{blue}}  & \textit{blue}  \\ \hline
     \end{tabular}
 \end{table}
-    
+As a result of our prototyping process, we have constructed the whole receiver circuit on a breadboard and the receiver part of the circuit is successfully operated as expected. The physical structure of our prototype is given in Figure \ref{receiver_breadboard} in Appendix.
 \section{Conclusion}
 In this project, we delved deeper into the intricacies of analog circuit design by applying the theoretical concepts learned in our EE311 and EE313 courses. Our focus was on optical wireless communication systems, and through our study of these systems, we gained a comprehensive understanding of their principles of operation. We explored new circuit designs such as transconductance and transresistance amplifiers, and learned how they can be applied in practical settings. Additionally, we gained valuable hands-on experience in implementing peak detector and speaker driver circuits. As we encountered and overcame any difficulties that arose during the course of the project, we developed a greater appreciation for the complexities and nuances of analog circuit design. Through this project, we were able to enhance our understanding of the fundamental concepts and principles that govern the functioning of analog circuits and gained a deeper understanding of their real-world applications.
 \section*{Appendix}
@@ -232,6 +234,18 @@ The physical model of our system is presented in Appendix.
     \includegraphics[width = 1\linewidth]{transmitter.jpeg}
     \caption{Transmitter prototype.}
     \label{transmitter_breadboard}
+\end{figure} 
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{receiver.jpeg}
+    \caption{Receiver prototype.}
+    \label{receiver_breadboard}
+\end{figure} 
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width = 1\linewidth]{speaker.jpeg}
+    \caption{Speaker driver prototype.}
+    \label{speaker_breadboard}
 \end{figure} 
 \end{document}
 
