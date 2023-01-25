@@ -45,7 +45,7 @@
 \section{Introduction}
 In this document, the final report of the term project of the EE313 course will be presented. The report is composed of two main parts which describe transmitter and receiver sides. The project specification is to create a telephone pipeline that uses light as a transmission medium.  
 \section{General Structure and Design Philisophy}
- The general structure is given in Figure \ref*{general}
+ The general structure is given in Figure \ref{general}
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{general_structure.jpeg}
@@ -54,8 +54,11 @@ In this document, the final report of the term project of the EE313 course will 
 \end{figure} 
 \section{Transmitter Side}
 \subsection{Input and Early Stage Amplification}
-The microphone functions as a resistor, with its resistance varying based on the audio waves. To turn audio signals into electrical signals, a voltage divider circuit can be employed. However, the resulting output signal is quite weak, making it susceptible to noise. To mitigate this, the small signal is amplified using a common source or common emitter amplifier, which results in a less noise-sensitive and more usable voltage range signal. Subsequently, this signal is passed through a low pass filter to separate the human voice for further processing.\subsection{Automatic Gain Control}
+The microphone functions as a resistor, with its resistance varying based on the audio waves. To turn audio signals into electrical signals, a voltage divider circuit can be employed. However, the resulting output signal is quite weak, making it susceptible to noise. To mitigate this, the small signal is amplified using a common source or common emitter amplifier, which results in a less noise-sensitive and more usable voltage range signal. Subsequently, this signal is passed through a low pass filter to separate the human voice for further processing.
+\subsection{Automatic Gain Control}
 \subsection{Reference Signal Summation}
+
+The constant gain audio signal and the high-frequency reference signal should be summed before transmission. This summation process is thought to be applied by adopting a simple opamp summing amplifier.  The schematic is given in \ref{}.
 \subsection{Light Transmission}
 \section{Receiver Side}
 \subsection{Light Receiver}
