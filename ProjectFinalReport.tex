@@ -43,9 +43,9 @@
 %\end{abstract}
 
 \section{Introduction}
-In this document, the proposal report of the term project of the EE313 course will be presented. 
+In this document, the final report of the term project of the EE313 course will be presented. The report is composed of two main parts which describe transmitter and receiver sides. The project specification is to create a telephone pipeline that uses light as a transmission medium.  
 \section{General Structure and Design Philisophy}
-We have divided the necessary circuiries into parts through our design process. The general structure is given in Figure \ref*{general}
+ The general structure is given in Figure \ref*{general}
 \begin{figure}[htbp!]
     \centering
     \includegraphics[width = 1\linewidth]{general_structure.jpeg}
@@ -54,8 +54,7 @@ We have divided the necessary circuiries into parts through our design process. 
 \end{figure} 
 \section{Transmitter Side}
 \subsection{Input and Early Stage Amplification}
-The microphone is basically a resistor; its resistance is dependent on the audio waves. To convert audio signals to electrical signals, a voltage divider topology can be used. Since the output signal of that conversion gives a very small signal, it is much more sensitive to any noise. Therefore, just after that stage, this small signal should be directly amplified by using a common source or common emitter amplifier. This pre-amplifier gave a less noise-sensitive and more operatable voltage range signal. After that, it is thought to be fed that signal to a low pass filter to filter out only the human voice for other stages. 
-\subsection{Automatic Gain Control}
+The microphone functions as a resistor, with its resistance varying based on the audio waves. To turn audio signals into electrical signals, a voltage divider circuit can be employed. However, the resulting output signal is quite weak, making it susceptible to noise. To mitigate this, the small signal is amplified using a common source or common emitter amplifier, which results in a less noise-sensitive and more usable voltage range signal. Subsequently, this signal is passed through a low pass filter to separate the human voice for further processing.\subsection{Automatic Gain Control}
 \subsection{Reference Signal Summation}
 \subsection{Light Transmission}
 \section{Receiver Side}
